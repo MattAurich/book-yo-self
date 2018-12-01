@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import TimeSlot from '../timeslot/TimeSlot';
-import Appointment from '../appointment/Appointment';
+import BookAppointment from '../appointment/BookAppointment';
 
 class Day extends Component {
   constructor(props) {
@@ -58,16 +58,18 @@ class Day extends Component {
       appointments: [
         {
           'id': '123',
-          'timeSlotsRefs': ['2018-09-24_6:00', '2018-09-24_6:15']
+          'timeSlotsRefs': ['2018-09-24_6:00', '2018-09-24_6:15'],
+          'span': 2,
         }
       ],
     }
   }
 
-  
+  bookAppointment(stuff) {
+    console.log(stuff)
+  }
 
   render() {
-    console.log(this.state)
     return (
       <div>
         <div>This is a day, and it contains:</div>
@@ -78,7 +80,7 @@ class Day extends Component {
             )
           )}
         </ol>
-        {/* <Appointment></Appointment> */}
+        <BookAppointment bookAppointment={this.bookAppointment}></BookAppointment>
       </div>
     )
   }
