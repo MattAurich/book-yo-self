@@ -1,7 +1,8 @@
 import React from 'react';
+import Month from './month/Month';
 
 const App = function() {
-  return <div>hello world</div>
+  return <Month></Month>;
 }
 
 export default App;
