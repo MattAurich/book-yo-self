@@ -66,7 +66,7 @@ class Day extends Component {
   }
 
   bookAppointment(stuff) {
-    console.log(stuff)
+    console.log(stuff, 'so many things')
   }
 
   render() {
