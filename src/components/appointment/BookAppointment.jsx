@@ -5,21 +5,22 @@ const BookAppointment = (props) => {
     <div>
       <div>
         <label htmlFor="blah">Start Time:</label>
-        <input type="text" id="blah" value="2018-09-24_5:15"/>
+        <input type="text" id="blah" defaultValue="2018-09-24_05:15"/>
       </div>
       <div>
         <label htmlFor="blah2">Span:</label>
-        <input type="text" id="blah2" value="2" />
+        <input type="text" id="blah2" defaultValue="2" />
       </div>
       <div>
         <button onClick={()=>{
-            props.bookAppointment(
+            props.putToPurgatory(
               {
-                startTime: '2018-09-24_5:15',
-                span: '2',
+                startDay: '2018-09-24',
+                startTime: '05:30',
+                span: 2,
               }
             )
-        }}>Book Yo Self</button>
+        }}>Put To Purgatory!</button>
       </div>
     </div>
   )

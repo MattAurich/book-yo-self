@@ -8,65 +8,48 @@ class Day extends Component {
 
     var event = new Date();
 
+    this.putToPurgatory = this.putToPurgatory.bind(this);
     this.state = {
       date: event.toLocaleDateString('en-US'),
-      config: {
+      meta: {
         increment: 15,
+        purgatory: [{
+          'id': '2018-09-24_06:00',
+          'expiration': '2018-12-08T22:02:02.133Z'
+        }, {
+          'id': '2018-09-24_06:30',
+          'expiration': '2018-12-08T22:05:21.579Z'
+        }]
       },
-      timeSlots: [
-        {
-          'id': '2018-09-24_5:15',
-          'count': 1,
-          'appointments': [],
-        },
-        {
-          'id': '2018-09-24_5:30',
-          'count': 2,
-          'appointments': [],
-        },
-        {
-          'id': '2018-09-24_5:45',
-          'count': 1,
-          'appointments': [],
-        },
-        {
-          'id': '2018-09-24_6:00',
-          'count': 0,
-          'appointments': ['123'],
-        },
-        {
-          'id': '2018-09-24_6:15',
-          'count': 0,
-          'appointments': ['123'],
-        },
-        {
-          'id': '2018-09-24_6:30',
-          'count': 1,
-          'appointments': [],
-        },
-        {
-          'id': '2018-09-24_6:45',
-          'count': 1,
-          'appointments': [],
-        },
-        {
-          'id': '2018-09-24_7:00',
-          'count': 0,
-          'appointments': [],
-        },
-      ],
-      appointments: [
-        {
-          'id': '123',
-          'timeSlotsRefs': ['2018-09-24_6:00', '2018-09-24_6:15'],
-          'span': 2,
+      timeSlots: {
+        '2018-09-24': {
+          '05:15': 1,
+          '05:30': 2,
+          '05:45': 1,
+          '06:00': 0,
+          '06:15': 0,
+          '06:30': 1,
+          '06:45': 1,
+          '07:00': 0,
         }
-      ],
+      },
+      appointments: {
+        '2018-09-24_06:45': 2,
+      },
     }
   }
 
-  bookAppointment(stuff) {
-    console.log(stuff)
+  putToPurgatory(details) {
+    let date = new Date(details.startDay);
+    date.setHours(...details.startTime.split(':'));
+    for (var i = 0; i < details.span; i++) {
+      let blah = new Date(date.setMinutes(date.getMinutes() + i * this.state.meta.increment))
+      let currentHours = blah.getHours();
+      if (currentHours < 10)  currentHours = '0'+currentHours;
+      let blah2 = String(currentHours + ':' + blah.getMinutes());
+      console.log(blah2)
+      console.log(this.state.timeSlots[details.startDay][blah2]);
+    }
   }
 
   render() {
@@ -74,13 +57,13 @@ class Day extends Component {
       <div>
         <div>This is a day, and it contains:</div>
         <ol>
-          {this.state.timeSlots.map(timeSlot => 
-            (
-              <TimeSlot key={timeSlot.id} id={timeSlot.id} count={timeSlot.count} appointments={timeSlot.appointments}></TimeSlot>
-            )
-          )}
+          {Object.keys(this.state.timeSlots).map(day => {
+            return Object.keys(this.state.timeSlots[day]).map(slot => {
+              return (<TimeSlot key={day + slot} id={day + slot} count={this.state.timeSlots[day][slot]}></TimeSlot>)
+            });
+          })}
         </ol>
-        <BookAppointment bookAppointment={this.bookAppointment}></BookAppointment>
+        <BookAppointment putToPurgatory={this.putToPurgatory}></BookAppointment>
       </div>
     )
   }
