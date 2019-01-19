@@ -12,7 +12,7 @@ class Day extends Component {
     this.state = {
       date: event.toLocaleDateString('en-US'),
       meta: {
-        increment: 15,
+        defaultIncrement: 15,
         purgatory: [{
           'id': '2018-09-24_06:00',
           'expiration': '2018-12-08T22:02:02.133Z'
@@ -34,7 +34,10 @@ class Day extends Component {
         }
       },
       appointments: {
-        '2018-09-24_06:45': 2,
+        '2018-09-24_06:45': {
+          span: 2,
+          increment: 15,
+        },
       },
     }
   }
