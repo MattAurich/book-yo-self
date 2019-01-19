@@ -13,11 +13,12 @@ class Day extends Component {
       date: event.toLocaleDateString('en-US'),
       meta: {
         defaultIncrement: 15,
+        defaultExpirationMinutes: 15,
         purgatory: [{
           'id': '2018-09-24_06:00',
           'expiration': '2018-12-08T22:02:02.133Z'
         }, {
-          'id': '2018-09-24_06:30',
+          'id': '2018-09-24_06:15',
           'expiration': '2018-12-08T22:05:21.579Z'
         }]
       },
@@ -45,8 +46,9 @@ class Day extends Component {
   putToPurgatory(details) {
     let date = new Date(details.startDay);
     date.setHours(...details.startTime.split(':'));
+
     for (var i = 0; i < details.span; i++) {
-      let blah = new Date(date.setMinutes(date.getMinutes() + i * this.state.meta.increment))
+      let blah = new Date(date.setMinutes(date.getMinutes() + i * this.state.meta.defaultIncrement))
       let currentHours = blah.getHours();
       if (currentHours < 10)  currentHours = '0'+currentHours;
       let blah2 = String(currentHours + ':' + blah.getMinutes());
