@@ -1,12 +1,12 @@
 import React from 'react';
 import Week from '../week/Week';
 
-const Month = () => {
+const Month = (props) => {
 
   return (
     <div>
       <div>this is a month</div>
-      <Week></Week>
+      <Week dbRef={props.dbRef}></Week>
     </div>
   );
 }

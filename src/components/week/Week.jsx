@@ -1,11 +1,11 @@
 import React from 'react';
 import Day from '../day/Day';
 
-const Week = () => {
+const Week = (props) => {
   return (
     <div>
       <div>this is a week</div>
-      <Day></Day>
+      <Day dbRef={props.dbRef}></Day>
     </div>
   )
 }

@@ -19,13 +19,35 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <title>React App</title>
+      <!-- update the version number as needed -->
+    <script defer src="/__/firebase/5.5.8/firebase-app.js"></script>
+    <!-- include only the Firebase features as you need -->
+    <script defer src="/__/firebase/5.5.8/firebase-auth.js"></script>
+    <script defer src="/__/firebase/5.5.8/firebase-database.js"></script>
+    <script defer src="/__/firebase/5.5.8/firebase-messaging.js"></script>
+    <script defer src="/__/firebase/5.5.8/firebase-storage.js"></script>
+    <!-- initialize the SDK after all desired features are loaded -->
+    <script defer src="/__/firebase/init.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   </head>
   <body>
     <noscript>
       You need to enable JavaScript to run this app.
     </noscript>
+    <script src="https://www.gstatic.com/firebasejs/5.5.8/firebase.js"></script>
+    
     <div id="root"></div>
+    <!--
+    <div id="root1" style="float:left"></div>
+    <div id="calendar_root" style="float:left"></div>
+    <div id="day_appt"></div>
+    <div id="scheduler"></div>
+
+      
+    
     <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.
@@ -36,5 +58,31 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
+    <script>
+    // Initialize Firebase
+    /*
+      var database_div = document.getElementById('database');
+      var cls_dbRef = firebase.database().ref('classes');
+
+      cls_dbRef.on('value',(snapshot) => database_div.innerText = JSON.stringify(snapshot.val()));
+
+      cls_dbRef.set({className: "Javascript",weeks:15});
+
+      var scheduler_div = document.getElementById("scheduler");
+      var timeslots_dbRef = firebase.database().ref("TimeSlots");
+      var timeslot_dbRef_date = timeslots_dbRef.child("2018-9-25");
+      console.log(timeslots_dbRef);
+      console.log(timeslot_dbRef_date);
+      timeslots_dbRef.on("value", (snapshot)=> {scheduler_div.innerText  += JSON.stringify(snapshot.val()) 
+        console.log(snapshot);
+      });
+      
+      timeslot_dbRef_date.on("value", (snapshot)=> {
+        //database_div.innerText = JSON.stringify(snapshot.val());
+        let obj = snapshot.val();
+        console.log("The key is: "+ snapshot.key)
+        Object.keys(obj).forEach(k => console.log(`The key is ${k} and the value is ${obj[k]}`))
+      });*/
+    </script>
   </body>
 </html>
